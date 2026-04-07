@@ -1,0 +1,15 @@
+# ===== Vivado =====
+*.jou
+*.log
+*.str
+
+/.Xil/
+/.cache/
+/.hw/
+/.ip_user_files/
+/.runs/
+/.sim/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
