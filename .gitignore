@@ -2,13 +2,16 @@
 *.jou
 *.log
 *.str
+*.xpr
 
-/.Xil/
-/.cache/
-/.hw/
-/.ip_user_files/
-/.runs/
-/.sim/
+# Generated folders (anywhere in repo)
+.Xil/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.gen/
 
 # ===== OS =====
 .DS_Store
