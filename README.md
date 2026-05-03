@@ -1,6 +1,15 @@
 # Digital Electronic System Design - Group Project
 Final delivery: 7-June 
 
+## To do  
+-  Ask for missing files:
+    - delay.vhd
+    - bram_controller.vhd
+    - division_lut.vhd
+    - volume_multiplier.vhd
+    - volume_saturator.vhd
+    - edge_detector_trigger.vhd
+
 ## Workload split (23 pts)
 
 0. Common (3 pts)
@@ -34,15 +43,6 @@ Final delivery: 7-June
     - Output selector (2 pts)
     - Digilent JSTK2 (1.5 pts)
 
-## To do  
--  Ask for missing files:
-    - delay.vhd
-    - bram_controller.vhd
-    - division_lut.vhd
-    - volume_multiplier.vhd
-    - volume_saturator.vhd
-    - edge_detector_trigger.vhd
-
 ## How to rebuild vivado projects
 1. **Open the Vivado Tcl Shell** from the Start menu:
    ```
@@ -61,4 +61,15 @@ Final delivery: 7-June
 
 4. Vivado will automatically recreate the project, import all sources and IPs, and restore the block design. When it finishes, the project can be opened normally in the Vivado GUI.
 
+## How to generate the build.tcl
 
+1. Open the project in Vivado
+2. Go to **File → Write Project to Tcl**
+3. Set the output path to your repo root
+4. Select the following options:
+   - ✅ **Copy sources to new project** — ensures all sources are bundled
+   - ☐ Write all properties — leave unchecked
+   - ☐ Recreate Block Designs using Tcl — leave unchecked
+   - ☐ Write object values — leave unchecked
+   - ☐ Ignore command errors — leave unchecked
+5. Click **OK**
