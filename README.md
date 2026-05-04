@@ -2,13 +2,21 @@
 Final delivery: 7-June 
 
 ## To do  
--  Ask for missing files:
-    - delay.vhd
-    - bram_controller.vhd
-    - division_lut.vhd
-    - volume_multiplier.vhd
-    - volume_saturator.vhd
-    - edge_detector_trigger.vhd
+
+## Green blocks / encripted files
+- delay.vhd
+- bram_controller.vhd
+- division_lut.vhd
+- volume_multiplier.vhd
+- volume_saturator.vhd
+- edge_detector_trigger.vhd
+
+## Xilinx catalog IPs
+- axis_fifo.vhd
+- axis_dwidth_converter
+- axis_broadcaster
+- clk_wiz
+- proc_sys_reset
 
 ## Workload split (23 pts)
 
@@ -17,30 +25,28 @@ Final delivery: 7-June
     - Clock frequency (1 pt)
 
 ### Path 1
-1. Person A (4 pts)
+1. Juan Camilo (6 pts)
     - Float compressor (2.5 pts)
     - Generic in float compressor (0.5 pts)
-    - Binary to decimal (1 pt)
-
-2. Person B (4 pts)
     - Depacketizer (1.5 pts)
     - Send controller (1 pt)
-    - 7 Segment controller (0.5 pts)
-    - Reports (1 pt)
+    - 7 Segment controller (0.5 pts)    
 
 ### Path 2
-3. Person C (4.5 pts)
+2. Juan Diego (5 pts)
     - Reverb (2 pts)
-    - Effect selector (0.5 pts)
     - Volume (2 pts)
+    - Binary to decimal (1 pt)
 
-4. Person D (4 pts)
+3. Jesus & Markel (5 pts)
     - Moving average (2 pts)
     - Led level controller (1 pt)
     - Balance (1 pt)
+    - Reports (1 pt)
 
-5. Person E (3.5 pts)
+4. Sara (4 pts)
     - Output selector (2 pts)
+    - Effect selector (0.5 pts)
     - Digilent JSTK2 (1.5 pts)
 
 ## How to rebuild vivado projects
