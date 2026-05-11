@@ -1,90 +1,93 @@
-`protect begin_protected
-`protect version = 2
-`protect encrypt_agent = "XILINX"
-`protect encrypt_agent_info = "Xilinx Encryption Tool 2020.2"
-`protect begin_commonblock
-`protect control error_handling = "delegated"
-`protect control runtime_visibility = "delegated"
-`protect control child_visibility = "delegated"
-`protect control decryption = "true"
-`protect end_commonblock
-`protect begin_toolblock
-`protect rights_digest_method="sha256"
-`protect key_keyowner = "Xilinx", key_keyname= "xilinxt_2020_08", key_method = "rsa", key_block
-NjAtBy3afRVO4CTp2xjrquWkp9aoZVyHMh0829Q1xVz15tJjf+3AxXWI1pZ117RF8FIfWhQviD6j
-I4+jcTO5PvgtJlbmkk0C3/wGo8L+AfOs9n6U5aVk+ngQCMiimiYTL8RFPMBwOQz+wQvt7ro20C+c
-ryHb6mBAs85U6yyvWC9RhHDkKDWVZREgK0Z7EzR4PQkFwtebUiQBXbuTg3BHAAkgZUoyn/5Wguf6
-mESB/8BcQ1sJa3Dt22Nd9A1DX+JrGAfoUAYn1dajHGdVj4z4sJVeuSD7U423fsaBCPKnhOGvGqxj
-gfq/zFYo6y1BjhPZ7jbyhJCgkMkAPGeR8HgAHg==
+--------------------------------------------------------------------------------
+-- Exponential gain stage for volume_controller.
+--
+--   step        = unsigned(volume(VOLUME_WIDTH-1 downto VOLUME_STEP_2))
+--   CENTER_STEP = 2^(VOLUME_WIDTH-VOLUME_STEP_2-1)        (unity gain)
+--   if step >= CENTER_STEP:  out = sample << (step - CENTER_STEP)
+--   else                  :  out = sample >> (CENTER_STEP - step)
+--
+-- Output is sign-extended to OUT_WIDTH bits; the volume_saturator clips it.
+-- Registered output, 1-cycle latency, full throughput.
+--------------------------------------------------------------------------------
 
-`protect control xilinx_configuration_visible = "false"
-`protect control xilinx_enable_modification = "false"
-`protect control xilinx_enable_probing = "false"
-`protect control xilinx_enable_netlist_export = "true"
-`protect control xilinx_enable_bitstream = "true"
-`protect control decryption = "true"
-`protect end_toolblock="PtQzu2pWS61Cr8k/CjjeilRNSehfNkqd3tOH2Y/wo/E="
-`protect data_method = "AES128-CBC"
-`protect encoding = (enctype = "BASE64", line_length = 76, bytes = 3408)
-`protect data_block
-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
-`protect end_protected
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity volume_multiplier is
+	Generic (
+		TDATA_WIDTH		: positive := 24;
+		VOLUME_WIDTH	: positive := 10;
+		VOLUME_STEP_2	: positive := 6;
+		OUT_WIDTH		: positive := 31		-- = TDATA_WIDTH + 2^(VOLUME_WIDTH-VOLUME_STEP_2-1) - 1
+	);
+	Port (
+		aclk			: in std_logic;
+		aresetn			: in std_logic;
+
+		s_axis_tvalid	: in std_logic;
+		s_axis_tdata	: in std_logic_vector(TDATA_WIDTH-1 downto 0);
+		s_axis_tlast	: in std_logic;
+		s_axis_tready	: out std_logic;
+
+		m_axis_tvalid	: out std_logic;
+		m_axis_tdata	: out std_logic_vector(OUT_WIDTH-1 downto 0);
+		m_axis_tlast	: out std_logic;
+		m_axis_tready	: in std_logic;
+
+		volume			: in std_logic_vector(VOLUME_WIDTH-1 downto 0)
+	);
+end volume_multiplier;
+
+architecture Behavioral of volume_multiplier is
+
+	constant STEP_WIDTH    : positive := VOLUME_WIDTH - VOLUME_STEP_2;
+	constant CENTER_STEP_U : unsigned(STEP_WIDTH-1 downto 0) := to_unsigned(2**(STEP_WIDTH-1), STEP_WIDTH);
+
+	signal valid_r : std_logic := '0';
+	signal last_r  : std_logic := '0';
+	signal data_r  : signed(OUT_WIDTH-1 downto 0) := (others => '0');
+
+	signal load    : std_logic;
+
+begin
+
+	-- AXI4-Stream:
+	load          <= m_axis_tready or not valid_r;
+	s_axis_tready <= load and aresetn;
+
+	m_axis_tvalid <= valid_r;
+	m_axis_tlast  <= last_r;
+	m_axis_tdata  <= std_logic_vector(data_r);
+
+	process(aclk)
+		variable step_u   : unsigned(STEP_WIDTH-1 downto 0);
+		variable extended : signed(OUT_WIDTH-1 downto 0);
+	begin
+		if rising_edge(aclk) then
+			if aresetn = '0' then
+				valid_r <= '0';
+				last_r  <= '0';
+				data_r  <= (others => '0');
+			elsif load = '1' then
+				valid_r <= s_axis_tvalid;
+				if s_axis_tvalid = '1' then
+					last_r   <= s_axis_tlast;
+					step_u   := unsigned(volume(VOLUME_WIDTH-1 downto VOLUME_STEP_2));
+					extended := resize(signed(s_axis_tdata), OUT_WIDTH);
+
+					if step_u >= CENTER_STEP_U then
+						-- Amplify: arithmetic left shift, sign preserved
+						data_r <= shift_left(extended,
+						                     to_integer(step_u - CENTER_STEP_U));
+					else
+						-- Attenuate: arithmetic right shift, sign preserved
+						data_r <= shift_right(extended,
+						                      to_integer(CENTER_STEP_U - step_u));
+					end if;
+				end if;
+			end if;
+		end if;
+	end process;
+
+end Behavioral;
